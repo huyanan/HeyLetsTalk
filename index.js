@@ -1,12 +1,16 @@
 var app = require('express')();
 var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var io = require('socket.io')(http, {
+  path: '/talk/socket.io'
+});
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/src/index.html');
 });
 
-io.on('connection', function(socket){
+io
+// .of('/talk')
+.on('connection', function(socket){
   console.log('a user connected')
   socket.on('chat message', function(msg){
     console.log('message: ' + msg);
