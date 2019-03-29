@@ -4,7 +4,7 @@ var io = require('socket.io')(http, {
   path: '/talk/socket.io'
 });
 
-app.get('/', function(req, res){
+app.get('/talk', function(req, res){
   res.sendFile(__dirname + '/src/index.html');
 });
 
